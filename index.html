@@ -8,9 +8,10 @@
 
 	<script type="text/javascript" src="http://cdn.knightlab.com/libs/storymapjs/latest/js/storymap-min.js"></script>
 	<script>
-		var storymap_data = 'data/map.json'; // This can be a URL or a Javascript object
-		var options = {"show_lines": false}
-		var storymap = new VCO.StoryMap('mapdiv', storymap_data, options);
+		var storymap_data = 'data/map.json',
+		options = { "show_lines": false },
+		storymap = new VCO.StoryMap('mapdiv', storymap_data, options);
+
 		window.onresize = function(event) {
 			storymap.updateDisplay(); // this isn't automatic
 		}

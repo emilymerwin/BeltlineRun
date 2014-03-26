@@ -26,12 +26,12 @@ slides = [{
 }]
 
 def get_field (exif,field) :
-  for (k,v) in exif.iteritems():
-     if TAGS.get(k) == field:
-        return v
+	for (k,v) in exif.iteritems():
+		if TAGS.get(k) == field:
+			return v
 
 files = [os.path.join(directory, f) for f in os.listdir(directory) if not f.startswith('.') #search directory for files, exclude hidden files
-     if os.path.isfile(os.path.join(directory, f))] #Get only files, not directories, join the string
+	if os.path.isfile(os.path.join(directory, f))] #Get only files, not directories, join the string
 
 for f in files:
 	#parse keys
@@ -40,8 +40,8 @@ for f in files:
 
 	exif = Image.open(f)._getexif()
 	GPS = get_field(exif, 'GPSInfo')
-	lat = float(str(GPS[2][0][0])+"."+str(GPS[2][1][0])+str(GPS[2][2][0]))
-	lon = float("-"+str(GPS[4][0][0])+"."+str(GPS[4][1][0])+str(GPS[4][2][0]))
+	lat = float(str(GPS[2][0][0])+"."+str(GPS[2][1][0])+str(GPS[2][2][0])) #convert to decimal format
+	lon = float("-"+str(GPS[4][0][0])+"."+str(GPS[4][1][0])+str(GPS[4][2][0])) #convert to decimal format, make negative for Western lons (all of ours)
 
 	#store the image properties we want for the JSON
 	slides.append({"media": {"url": f.strip("../"), "credit": "Ben Gray/AJC", "caption": get_field(exif, 'ImageDescription')}, "date": get_field(exif, "DateTimeOriginal"), "location": {"lat": lat, "lon": lon}, "text": {"text": get_field(exif, 'DateTimeOriginal')}})
