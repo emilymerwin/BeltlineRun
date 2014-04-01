@@ -8,7 +8,7 @@ from PIL import Image
 from PIL.ExifTags import TAGS
 import operator
 
-directory = '../img/' #where to find the images
+directory = '../img_big/' #where to find the images
 
 #create slides array and add the overview slide
 slides = [{
@@ -17,11 +17,6 @@ slides = [{
 	"text": {
 		"headline": "Big headline <small>And a subhead if you want</small>",
 		"text": "<p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Sed posuere consectetur est at lobortis. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Nulla vitae elit libero, a pharetra augue. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p> <span class='vco-note'>This is an overview or title slide to show all the points in your story routed on your map.</span>"
-	},
-	"media": {
-		"url": "http://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/US_Mean_Center_of_Population_1790-2010.PNG/800px-US_Mean_Center_of_Population_1790-2010.PNG",
-		"credit": "Ben Gray/AJC",
-		"caption": "Caption Nullam id dolor id nibh ultricies vehicula ut id elit."
 	}
 }]
 
@@ -44,7 +39,7 @@ for f in files:
 	lon = float("-"+str(GPS[4][0][0])+"."+str(GPS[4][1][0])+str(GPS[4][2][0])) #convert to decimal format, make negative for Western lons (all of ours)
 
 	#store the image properties we want for the JSON
-	slides.append({"media": {"url": f.strip("../"), "credit": "Ben Gray/AJC", "caption": get_field(exif, 'ImageDescription')}, "date": get_field(exif, "DateTimeOriginal"), "location": {"lat": lat, "lon": lon}, "text": {"text": get_field(exif, 'DateTimeOriginal')}})
+	slides.append({"media": {"url": f.strip("../"), "credit": "Ben Gray/AJC", "caption": get_field(exif, 'ImageDescription')}, "date": get_field(exif, "DateTimeOriginal"), "location": {"lat": lat, "lon": lon}, "text": {"headline": "Headline (optional)", "text": "This is where you would put a caption. Timestamp: "+get_field(exif, 'DateTimeOriginal')}})
 
 #put the images in chronological order
 slides.sort(key=operator.itemgetter("date"))
