@@ -9,7 +9,7 @@ from PIL import Image
 from PIL.ExifTags import TAGS
 import operator
 
-directory = '../img_big/' #where to find the images
+directory = '../img/resized/' #where to find the images
 
 #create slides array and add the overview slide
 slides = [{
