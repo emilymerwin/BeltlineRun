@@ -40,13 +40,13 @@ for f in files:
 	lon = -1*float(decimal.Decimal(GPS[4][0][0]/GPS[4][0][1]) + decimal.Decimal(GPS[4][1][0]/GPS[4][1][1])/60 + decimal.Decimal(GPS[4][2][0]/GPS[4][2][1])/3600) #convert to decimal format, make negative for Western lons (all of ours)
 
 	#store the image properties we want for the JSON
-	slides.append({"media": {"url": f.strip("../"), "credit": "Ben Gray/AJC", "caption": get_field(exif, 'ImageDescription')}, "date": get_field(exif, "DateTimeOriginal"), "location": {"lat": lat, "lon": lon}, "text": {"headline": "Headline (optional)", "text": "This is where you would put a caption. Timestamp: "+get_field(exif, 'DateTimeOriginal')}})
+	slides.append({"media": {"url": f.strip("../"), "credit": "Ben Gray/AJC", "caption": get_field(exif, 'ImageDescription')}, "date": get_field(exif, "DateTimeOriginal"), "location": {"lat": lat, "lon": lon, "zoom": 15}, "text": {"headline": "Headline (optional)", "text": "This is where you would put a caption. Timestamp: "+get_field(exif, 'DateTimeOriginal')}})
 
 #put the images in chronological order
 slides.sort(key=operator.itemgetter("date"))
 
 #create an object with the properties we need
-tree = { "storymap": { "language": "en", "slides": slides } }
+tree = { "storymap": { "language": "en", "slides": slides } } #supposedly you can also use , "height": 500, "width": 400, "layout": "portrait", you would specify those outside the storymap object, I think
 
 #turn tree object into JSON and pretty print it
 out = json.dumps(tree, indent=4, separators=(',', ': '))

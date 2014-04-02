@@ -6,10 +6,12 @@
 <body>
 	<div id="mapdiv" style="width: 970px; height: 900px"></div> 
 
-	<script type="text/javascript" src="http://cdn.knightlab.com/libs/storymapjs/latest/js/storymap-min.js"></script>
+	<!--<script type="text/javascript" src="http://cdn.knightlab.com/libs/storymapjs/latest/js/storymap-min.js"></script>-->
+	<script type="text/javascript" src="http://alt.coxnewsweb.com/ajc/_newsapps/2014/beltlineMap/js/vendor/storymap.js"></script>
 	<script>
 		var storymap_data = 'data/map.json',
-		options = {  layout: "portrait", skinny_size: 970, show_lines: false, map_center_offset: {top:0,left:0}, height: 900},
+		//layout: "portrait", skinny_size: 670, map_center_offset: {top:0,left:0}, height: 900, map_height: 200, map_popup: true, line_follows_path: false, 
+		options = { show_lines: false, show_history_line: false, calculate_zoom: false },
 		storymap = new VCO.StoryMap('mapdiv', storymap_data, options);
 
 		window.onresize = function(event) {
