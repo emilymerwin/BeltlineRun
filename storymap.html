@@ -14,6 +14,9 @@
 		polyline_options = {color: 'red', weight:3},
 		polyline = new L.polyline(line_points, polyline_options).addTo(storymap);
 
+		storymap.on('ready', function(){
+			console.log("ready")
+		})
 		window.onresize = function(event) {
 			storymap.updateDisplay(); // this isn't automatic
 		}
