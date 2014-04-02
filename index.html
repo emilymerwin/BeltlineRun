@@ -5,14 +5,21 @@
 	<script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.js'></script>
 	<link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.css' rel='stylesheet' />
 	<style>
-	#map { height: 600px; }
+	#map {
+		height: 700px;
+		max-width: 960px;
+	}
+	path {
+		stroke: #FF6536;
+		stroke-width: 4;
+	}
 	</style>
 </head>
 <body>
 	<div id="map"></div>
 
 	<script>
-	var map = L.map('map').setView([33.775682989507914, -84.36510918661952], 13);
+	var map = L.map('map').setView([33.768682989507914, -84.36510918661952], 13);
 	L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png', {
 		attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>, Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>.',
 		maxZoom: 18
