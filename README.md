@@ -12,5 +12,6 @@
 ##ToDo
  - [X] create line with Ben's Garmin data
  - [ ] Add image display
+ - [X] remove line that leads to Ben's house
  - [ ] retina versions of images?
  
