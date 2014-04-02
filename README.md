@@ -20,3 +20,6 @@
  - better image layout
  - retina versions of images?
  
+ 
+ line_follows_path: vs show_lines? 
+ 
