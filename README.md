@@ -13,5 +13,10 @@
 
 ###Dependencies
  - <a href="https://github.com/python-imaging/Pillow" target="_blank">Python Image Library (PIL) Pillow </a> for accessing photo metadata
- - <a href="http://cdn.knightlab.com/libs/storymapjs/latest/js/storymap-min.js" target="_blank">StoryMap js</a>
+ - <a href="https://github.com/NUKnightLab/StoryMapJS" target="_blank">StoryMap js</a>
+ 
+##ToDo
+ - create line with Ben's Garmin data
+ - better image layout
+ - retina versions of images?
  
