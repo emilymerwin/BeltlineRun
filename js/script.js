@@ -9,4 +9,12 @@
 	var featureLayer = L.mapbox.featureLayer()
 	    .loadURL('data/map.geojson')
 	    .addTo(map);
+
+	featureLayer.on('ready', function(){
+		this.eachLayer(function(layer){
+	    var content = '<div class="popup"><img src="'+layer.feature.properties.image+'"/><h1>size: ' + layer.feature.properties.date + '<\/h1>' +
+	        '</div>';
+	    layer.bindPopup(content);
+		});
+	});
 //}());

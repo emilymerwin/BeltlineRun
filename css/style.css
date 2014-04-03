@@ -6,3 +6,6 @@ path {
 	stroke: #FF6536;
 	stroke-width: 4;
 }
+.popup img {
+	max-width: 400px;
+}
