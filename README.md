@@ -15,10 +15,12 @@
  - [X] Add image display
  - [X] remove line that leads to Ben's house
  - [ ] Different colors for different stages of beltline
- - [ ] Add Jill's photos
+ - [X] Add Jill's photos
  - [ ] Add layer toggle
  - [X] Open first popup on load
- - [ ] Create navigation along the path
+ - [X] Create navigation along the path
  - [ ] retina versions of images?
  - [X] make sure markers are sorted by timestamp
+ - [ ] Need a way to stop/pause/start tour, or change where you are in the tour
+ - [ ] Change marker color when active
  

@@ -1,4 +1,5 @@
-//(function() { //commented so I can access vars in development
+(function() {
+	var markers = [], ui = document.getElementById('map-ui');
 	var map = L.map('map').setView([33.768682989507914, -84.36510918661952], 13);
 	L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png', {
 		attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>, Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>.',
@@ -21,12 +22,9 @@
 			var content = '<p>' + prop.text+'<\/p>';
 			layer.bindPopup(content);
 		});
-		//automatically move through points and trigger popups (but first sort into chronological order)
-		//cycle(markers.sort(chronoSort));
 	});
 
 	featureLayer.on('ready', function(){
-		var markers = [];
 		this.eachLayer(function(layer){
 			var prop = layer.feature.properties;
 			prop.date = new Date(prop.date);
@@ -34,15 +32,13 @@
 			layer.bindPopup(content, {maxWidth: prop.width, height: prop.height});
 			markers.push(layer);
 		});
-		//automatically move through points and trigger popups (but first sort into chronological order)
-		cycle(markers.sort(chronoSort));
 	});
 
 	function cycle(markers) {
 		var i = 0;
 		function run() {
 			if (++i > markers.length - 1) i = 0;
-			map.setView(markers[i].getLatLng(), 12);
+			map.setView(markers[i].getLatLng(), 15);
 			markers[i].openPopup();
 			window.setTimeout(run, 3000);
 		}
@@ -82,4 +78,8 @@
 		return(formattedTime);
 	}//reformatTimestamp
 
-//}());
+	document.getElementById("cycle").onclick = function(){
+		//automatically move through points and trigger popups (but first sort into chronological order)
+		cycle(markers.sort(chronoSort));
+	 }
+}());

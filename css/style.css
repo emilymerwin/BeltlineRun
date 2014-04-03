@@ -6,3 +6,47 @@ path {
 	stroke: #367498;
 	stroke-width: 8;
 }
+#map-ui {
+	position: absolute;
+	top: 75px;
+	left: 10px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	z-index: 100;
+}
+
+#map-ui a {
+	 background: #FFF;
+	 display: block;
+	 margin: 0;
+	 padding: 0;
+	 border: 1px solid #BBB;
+	 border-bottom-width: 0;
+	 min-width: 138px;
+	 padding: 10px;
+	 text-decoration: none;
+	 text-align: center;
+}
+
+#map-ui a:hover {
+	background: #ECF5FA;
+}
+
+#map-ui li:last-child a{
+	border-bottom-width: 1px;
+	-webkit-border-radius: 0 0 3px 3px;
+	border-radius: 0 0 3px 3px;
+}
+
+#map-ui li:first-child a{
+	-webkit-border-radius: 3px 3px 0 0;
+	border-radius: 3px 3px 0 0;
+}
+
+#map-ui button.active {
+	background: #3887BE;
+	border-color: #3887BE;
+	border-top-color: #FFF;
+	color: #FFF;
+}
