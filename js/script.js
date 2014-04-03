@@ -7,38 +7,36 @@
 	
 	//add GeoJSON to map as a layer
 	var featureLayer = L.mapbox.featureLayer()
-	    .loadURL('data/map.geojson')
-	    .addTo(map);
+		.loadURL('data/map.geojson')
+		.addTo(map);
 
 	featureLayer.on('ready', function(){
 		var markers = [];
 		this.eachLayer(function(layer){
-			var prop = layer.feature.properties,
-	    layer.bindPopup(content, {maxWidth: prop.width, height: prop.height});
-			date = new Date(prop.date),
-			content = '<img src="'+prop.image+'" style="height:'+prop.height+'; width:'+prop.width+'"/><h1>' + reformatTimestamp(date)+'<\/h1>';
+			var prop = layer.feature.properties;
+			prop.date = new Date(prop.date);
+			var content = '<img src="'+prop.image+'" style="height:'+prop.height+'; width:'+prop.width+'"/><h1>' + reformatTimestamp(prop.date)+'<\/h1>';
+			layer.bindPopup(content, {maxWidth: prop.width, height: prop.height});
 			markers.push(layer);
 		});
 		//automatically move through points and trigger popups (but first sort into chronological order)
-		cycle(markers.sort(comp));
+		cycle(markers.sort(chronoSort));
 	});
-	
+
 	function cycle(markers) {
-	    var i = 0;
-	    function run() {
-	        if (++i > markers.length - 1) i = 0;
-	        map.setView(markers[i].getLatLng(), 12);
-	        markers[i].openPopup();
-	        window.setTimeout(run, 3000);
-	    }
-	    run();
-	}
+		var i = 0;
+		function run() {
+			if (++i > markers.length - 1) i = 0;
+			map.setView(markers[i].getLatLng(), 12);
+			markers[i].openPopup();
+			window.setTimeout(run, 3000);
+		}
+		 run();
+	 }//cycle
 
 	//sort markers by timestamp
-	function comp(a, b) {
-		console.log(new Date(a.feature.properties.date).getTime());
-		console.log(a.feature.properties.date);
-		return new Date(a.feature.properties.date).getTime() - new Date(b.feature.properties.date).getTime();
+	function chronoSort(a, b) {
+		return a.feature.properties.date.getTime() - b.feature.properties.date.getTime();
 	}//comp
 
 	function reformatTimestamp(timestamp) {
