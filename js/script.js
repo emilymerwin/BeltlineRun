@@ -9,6 +9,21 @@
 	var featureLayer = L.mapbox.featureLayer()
 		.loadURL('data/map.geojson')
 		.addTo(map);
+		
+	var jillLayer = L.mapbox.featureLayer()
+		.loadURL('data/jill.geojson')
+		.addTo(map);
+		
+	jillLayer.on('ready', function(){
+		this.eachLayer(function(layer){
+			var prop = layer.feature.properties;
+			prop.date = new Date(prop.date);
+			var content = '<p>' + prop.text+'<\/p>';
+			layer.bindPopup(content);
+		});
+		//automatically move through points and trigger popups (but first sort into chronological order)
+		//cycle(markers.sort(chronoSort));
+	});
 
 	featureLayer.on('ready', function(){
 		var markers = [];
