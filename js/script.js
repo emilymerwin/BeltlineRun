@@ -18,7 +18,8 @@
 	    layer.bindPopup(content, {maxWidth: prop.width, height: prop.height});
 			markers.push(layer);
 		});
-		cycle(markers)
+		//automatically move through points and trigger popups (but first sort into chronological order)
+		cycle(markers.sort(comp));
 	});
 	
 	function cycle(markers) {
@@ -31,4 +32,12 @@
 	    }
 	    run();
 	}
+
+	//sort markers by timestamp
+	function comp(a, b) {
+		console.log(new Date(a.feature.properties.date).getTime());
+		console.log(a.feature.properties.date);
+		return new Date(a.feature.properties.date).getTime() - new Date(b.feature.properties.date).getTime();
+	}//comp
+
 //}());
