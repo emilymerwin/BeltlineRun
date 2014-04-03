@@ -28,7 +28,7 @@
 		this.eachLayer(function(layer){
 			var prop = layer.feature.properties;
 			prop.date = new Date(prop.date);
-			var content = '<img src="'+prop.image+'" style="height:'+prop.height+'; width:'+prop.width+'"/><h1>' + reformatTimestamp(prop.date)+'<\/h1>';
+			var content = '<img src="'+prop.image+'" style="height:'+prop.height+'; width:'+prop.width+'"/>';
 			layer.bindPopup(content, {maxWidth: prop.width, height: prop.height});
 			markers.push(layer);
 		});
