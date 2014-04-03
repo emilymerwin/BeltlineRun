@@ -12,9 +12,9 @@
 
 	featureLayer.on('ready', function(){
 		this.eachLayer(function(layer){
-	    var content = '<div class="popup"><img src="'+layer.feature.properties.image+'"/><h1>size: ' + layer.feature.properties.date + '<\/h1>' +
-	        '</div>';
-	    layer.bindPopup(content);
+			var prop = layer.feature.properties;
+	    var content = '<img src="'+prop.image+'" style="height:'+prop.height+'; width:'+prop.width+'"/><h1>size: ' + prop.date + '<\/h1>';
+	    layer.bindPopup(content, {maxWidth: prop.width, height: prop.height});
 		});
 	});
 //}());
