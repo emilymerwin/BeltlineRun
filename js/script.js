@@ -24,12 +24,21 @@
 		});
 	});
 
+	var docwidth = document.body.clientWidth;
+
 	featureLayer.on('ready', function(){
 		this.eachLayer(function(layer){
 			var prop = layer.feature.properties;
 			prop.date = new Date(prop.date);
-			var content = '<img src="'+prop.image+'" style="height:'+prop.height+'; width:'+prop.width+'"/>';
-			layer.bindPopup(content, {maxWidth: prop.width, height: prop.height});
+			var content;
+			if (docwidth<400){
+				content = '<img src="'+prop.image+'" style="width:270px"/>';
+				layer.bindPopup(content, {maxWidth: prop.width, minHeight: prop.height});
+			} else {
+				content = '<img src="'+prop.image+'" style="height:'+prop.height+'; width:'+prop.width+'"/>';
+				layer.bindPopup(content, {maxWidth: prop.width, minHeight: prop.height});
+			}
+
 			markers.push(layer);
 		});
 	});
@@ -40,7 +49,7 @@
 			if (++i > markers.length - 1) i = 0;
 			map.setView(markers[i].getLatLng(), 15);
 			markers[i].openPopup();
-			window.setTimeout(run, 3000);
+			window.setTimeout(run, 4000);
 		}
 		 run();
 	 }//cycle
@@ -81,5 +90,5 @@
 	document.getElementById("cycle").onclick = function(){
 		//automatically move through points and trigger popups (but first sort into chronological order)
 		cycle(markers.sort(chronoSort));
-	 }
+	}
 }());

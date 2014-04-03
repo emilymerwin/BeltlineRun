@@ -1,3 +1,8 @@
+#cycle{
+	font-family:sans-serif;
+	cursor:pointer;
+}
+
 #map {
 	height: 700px;
 	max-width: 960px;
@@ -49,4 +54,13 @@ path {
 	border-color: #3887BE;
 	border-top-color: #FFF;
 	color: #FFF;
+}
+
+.leaflet-popup-tip-container {
+	height:10px;
+}
+
+#map-ui{
+	top:15px;
+	left:50px;
 }
