@@ -11,10 +11,12 @@
  
 ##ToDo
  - [X] create line with Ben's Garmin data
- - [ ] Add image display
+ - [X] Add image display
  - [X] remove line that leads to Ben's house
  - [ ] Different colors for different stages of beltline
  - [ ] Add Jill's photos
  - [ ] Add layer toggle
+ - [ ] Open first popup on load
+ - [ ] Create navigation along the path
  - [ ] retina versions of images?
  
