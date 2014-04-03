@@ -14,8 +14,9 @@
 		var markers = [];
 		this.eachLayer(function(layer){
 			var prop = layer.feature.properties,
-	    content = '<img src="'+prop.image+'" style="height:'+prop.height+'; width:'+prop.width+'"/><h1>size: ' + prop.date + '<\/h1>';
 	    layer.bindPopup(content, {maxWidth: prop.width, height: prop.height});
+			date = new Date(prop.date),
+			content = '<img src="'+prop.image+'" style="height:'+prop.height+'; width:'+prop.width+'"/><h1>' + reformatTimestamp(date)+'<\/h1>';
 			markers.push(layer);
 		});
 		//automatically move through points and trigger popups (but first sort into chronological order)
@@ -39,5 +40,33 @@
 		console.log(a.feature.properties.date);
 		return new Date(a.feature.properties.date).getTime() - new Date(b.feature.properties.date).getTime();
 	}//comp
+
+	function reformatTimestamp(timestamp) {
+		var formattedTime = setTimeFormat(timestamp.getHours()) + ":" + showZeroFilled(timestamp.getMinutes()) + setAmPm(timestamp);
+
+		function setTimeFormat(passedHour) {
+			if (passedHour > 0 && passedHour < 13) {
+				if (passedHour === "0") passedHour = 12;
+				return (passedHour);
+			}
+			if (passedHour == 0) {
+				return (12);
+			}
+			return (passedHour-12);
+		}
+		function showZeroFilled(inValue) {
+			if (inValue > 9) {
+				return "" + inValue;
+			}
+			return "0" + inValue;
+		}
+		function setAmPm(timestamp) {
+			if (timestamp.getHours() < 12) {
+				return (" a.m.");
+			}
+			return (" p.m.");
+		}
+		return(formattedTime);
+	}//reformatTimestamp
 
 //}());

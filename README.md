@@ -17,8 +17,8 @@
  - [ ] Different colors for different stages of beltline
  - [ ] Add Jill's photos
  - [ ] Add layer toggle
- - [ ] Open first popup on load
+ - [X] Open first popup on load
  - [ ] Create navigation along the path
  - [ ] retina versions of images?
- - [ ] make sure markers are sorted by timestamp
+ - [X] make sure markers are sorted by timestamp
  
