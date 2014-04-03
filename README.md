@@ -19,4 +19,5 @@
  - [ ] Open first popup on load
  - [ ] Create navigation along the path
  - [ ] retina versions of images?
+ - [ ] make sure markers are sorted by timestamp
  

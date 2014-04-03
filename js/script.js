@@ -11,10 +11,24 @@
 	    .addTo(map);
 
 	featureLayer.on('ready', function(){
+		var markers = [];
 		this.eachLayer(function(layer){
-			var prop = layer.feature.properties;
-	    var content = '<img src="'+prop.image+'" style="height:'+prop.height+'; width:'+prop.width+'"/><h1>size: ' + prop.date + '<\/h1>';
+			var prop = layer.feature.properties,
+	    content = '<img src="'+prop.image+'" style="height:'+prop.height+'; width:'+prop.width+'"/><h1>size: ' + prop.date + '<\/h1>';
 	    layer.bindPopup(content, {maxWidth: prop.width, height: prop.height});
+			markers.push(layer);
 		});
+		cycle(markers)
 	});
+	
+	function cycle(markers) {
+	    var i = 0;
+	    function run() {
+	        if (++i > markers.length - 1) i = 0;
+	        map.setView(markers[i].getLatLng(), 12);
+	        markers[i].openPopup();
+	        window.setTimeout(run, 3000);
+	    }
+	    run();
+	}
 //}());
