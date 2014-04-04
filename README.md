@@ -13,17 +13,18 @@
 ##ToDo
  - [X] create line with Ben's Garmin data
  - [X] Add image display
+ - [X] Add Jill's points
  - [X] remove line that leads to Ben's house
- - [ ] Different colors for different stages of beltline
- - [X] Add Jill's photos
- - [ ] Add layer toggle
  - [X] Open first popup on load
  - [X] Create navigation along the path
- - [ ] retina versions of images?
  - [X] make sure markers are sorted by timestamp
  - [X] Need a way to stop/pause/start tour, or change where you are in the tour
- - [ ] Change marker color when active
  - [X] popups aren't responsive
- - [ ] Timestamps displaying in wrong timezone on mobile, but correct on desktop
  - [ ] clicking on the polyline creates a broken popup because it doesn't have the right properties.
  - [ ] Clicking on map or popup "x" should pause tour
+ - [ ] Add layer toggle
+ - [ ] Needs a legend
+ - [ ] Different colors for different stages of beltline
+ - [ ] Change marker color when active
+ - [ ] Timestamps displaying in wrong timezone on mobile, but correct on desktop
+ - [ ] retina versions of images?
