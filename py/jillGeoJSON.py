@@ -35,7 +35,7 @@ for f in files:
 	lat = float(decimal.Decimal(GPS[2][0][0]/GPS[2][0][1]) + decimal.Decimal(GPS[2][1][0]/GPS[2][1][1])/60 + decimal.Decimal(GPS[2][2][0]/GPS[2][2][1])/3600) #convert to decimal format
 	lon = -1*float(decimal.Decimal(GPS[4][0][0]/GPS[4][0][1]) + decimal.Decimal(GPS[4][1][0]/GPS[4][1][1])/60 + decimal.Decimal(GPS[4][2][0]/GPS[4][2][1])/3600) #convert to decimal format, make negative for Western lons (all of ours)
 	#store the image properties we want for the JSON
-	geoJ["features"].append({"type": "Feature", "geometry": {"type": "Point", "coordinates": [lon, lat]}, "properties": {"date": get_field(exif, "DateTimeOriginal"), "marker-symbol": "star", "marker-size": "small", "marker-color": "#FC7234", "text": get_field(exif, "ImageDescription"),"width": str(get_field(exif, "ExifImageWidth"))+"px", "height": str(get_field(exif, "ExifImageHeight"))+"px", "image": f.strip("../") }})
+	geoJ["features"].append({"type": "Feature", "geometry": {"type": "Point", "coordinates": [lon, lat]}, "properties": {"marker-symbol": "star", "marker-size": "small", "marker-color": "#FC7234", "text": get_field(exif, "ImageDescription")} })
 
 #dates.sort()
 # for i, feature in geoJ["features"]:
