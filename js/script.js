@@ -73,7 +73,8 @@
 		return a.feature.properties.date.getTime() - b.feature.properties.date.getTime();
 	}
 
-	function reformatTimestamp(timestamp) {
+	//currently not in use because of weird timezone thing on mobile
+	/*function reformatTimestamp(timestamp) {
 		var formattedTime = setTimeFormat(timestamp.getHours()) + ":" + showZeroFilled(timestamp.getMinutes()) + setAmPm(timestamp);
 
 		function setTimeFormat(passedHour) {
@@ -99,7 +100,7 @@
 			return (" p.m.");
 		}
 		return(formattedTime);
-	}//reformatTimestamp
+	}//reformatTimestamp*/
 
 	document.getElementById("map-ui").onclick = function(){
 		//automatically move through points and trigger popups (but first sort into chronological order)
