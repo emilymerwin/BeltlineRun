@@ -38,7 +38,7 @@ for f in files:
 	lon = -1*float(decimal.Decimal(GPS[4][0][0]/GPS[4][0][1]) + decimal.Decimal(GPS[4][1][0]/GPS[4][1][1])/60 + decimal.Decimal(GPS[4][2][0]/GPS[4][2][1])/3600) #convert to decimal format, make negative for Western lons (all of ours)
 
 	#store the image properties we want for the JSON
-	geoJ["features"].append({"type": "Feature", "geometry": {"type": "Point", "coordinates": [lon, lat]}, "properties": {"marker-symbol": "camera", "marker-size": "small", "marker-color": "#367498", "date": get_field(exif, "DateTimeOriginal"), "width": str(get_field(exif, "ExifImageWidth"))+"px", "height": str(get_field(exif, "ExifImageHeight"))+"px", "image": f.strip("../") }})
+	geoJ["features"].append({"type": "Feature", "geometry": {"type": "Point", "coordinates": [lon, lat]}, "properties": {"marker-symbol": "camera", "marker-size": "small", "marker-color": "#367498", "date": get_field(exif, "DateTimeOriginal"), "caption": get_field(exif, "ImageDescription"), "width": str(get_field(exif, "ExifImageWidth"))+"px", "height": str(get_field(exif, "ExifImageHeight"))+"px", "image": f.strip("../") }})
 
 #turn tree object into JSON and pretty print it
 out = json.dumps(geoJ, indent=4, separators=(',', ': '))

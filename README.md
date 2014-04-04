@@ -25,3 +25,4 @@
  - [ ] Change marker color when active
  - [X] popups aren't responsive
  - [ ] Timestamps displaying in wrong timezone on mobile, but correct on desktop
+ - [ ] clicking on the polyline creates a broken popup because it doesn't have the right properties.

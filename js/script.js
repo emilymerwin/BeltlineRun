@@ -28,12 +28,13 @@
 		this.eachLayer(function(layer){
 			var prop = layer.feature.properties;
 			prop.date = new Date(prop.date);
+			prop.caption = prop.caption || " ";
 			var content;
 			if (docwidth<400){
 				content = '<img src="'+prop.image+'" style="width:270px"/>';
 				layer.bindPopup(content, {maxWidth: prop.width, minHeight: prop.height});
 			} else {
-				content = '<img src="'+prop.image+'" style="height:'+prop.height+'; width:'+prop.width+'"/>';
+				content = '<img src="'+prop.image+'" style="height:'+prop.height+'; width:'+prop.width+'"/><p>'+prop.caption +'</p>';
 				layer.bindPopup(content, {maxWidth: prop.width, minHeight: prop.height});
 			}
 
