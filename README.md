@@ -21,8 +21,9 @@
  - [X] Create navigation along the path
  - [ ] retina versions of images?
  - [X] make sure markers are sorted by timestamp
- - [ ] Need a way to stop/pause/start tour, or change where you are in the tour
+ - [X] Need a way to stop/pause/start tour, or change where you are in the tour
  - [ ] Change marker color when active
  - [X] popups aren't responsive
  - [ ] Timestamps displaying in wrong timezone on mobile, but correct on desktop
  - [ ] clicking on the polyline creates a broken popup because it doesn't have the right properties.
+ - [ ] Clicking on map or popup "x" should pause tour

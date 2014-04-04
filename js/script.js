@@ -1,5 +1,5 @@
 (function() {
-	var markers = [], ui = document.getElementById('map-ui');
+	var markers = [], btnTxt = document.getElementById('cycle'), currentSlide = 0, timer, touring;
 	var map = L.map('map').setView([33.768682989507914, -84.36510918661952], 13);
 	L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png', {
 		attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>, Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>.',
@@ -37,26 +37,41 @@
 				content = '<img src="'+prop.image+'" style="height:'+prop.height+'; width:'+prop.width+'"/><p>'+prop.caption +'</p>';
 				layer.bindPopup(content, {maxWidth: prop.width, minHeight: prop.height});
 			}
-
 			markers.push(layer);
+			prop.id = markers.length;
+			//if the tour has been started or paused, resume tour from active marker
+			layer.on('click', function() {
+				if(currentSlide){
+					currentSlide = prop.id;
+				}
+			});
 		});
 	});
 
 	function cycle(markers) {
-		var i = 0;
+		var i = currentSlide;
 		function run() {
 			if (++i > markers.length - 1) i = 0;
+			currentSlide = i;
 			map.setView(markers[i].getLatLng(), 15);
 			markers[i].openPopup();
-			window.setTimeout(run, 4000);
+			timer = window.setTimeout(run, 4000);
 		}
-		 run();
+		if(!touring){
+			run();
+			touring = true;
+			btnTxt.innerHTML = "Pause tour";
+		} else {
+			window.clearTimeout(timer);
+			touring = false;
+			btnTxt.innerHTML = "Resume tour";
+		}
 	 }//cycle
 
 	//sort markers by timestamp
 	function chronoSort(a, b) {
 		return a.feature.properties.date.getTime() - b.feature.properties.date.getTime();
-	}//comp
+	}
 
 	function reformatTimestamp(timestamp) {
 		var formattedTime = setTimeFormat(timestamp.getHours()) + ":" + showZeroFilled(timestamp.getMinutes()) + setAmPm(timestamp);
@@ -86,7 +101,7 @@
 		return(formattedTime);
 	}//reformatTimestamp
 
-	document.getElementById("cycle").onclick = function(){
+	document.getElementById("map-ui").onclick = function(){
 		//automatically move through points and trigger popups (but first sort into chronological order)
 		cycle(markers.sort(chronoSort));
 	}
