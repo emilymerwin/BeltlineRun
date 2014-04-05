@@ -6,6 +6,14 @@
 		maxZoom: 18
 	}).addTo(map);
 	
+	var legend = L.control({position: 'topright'});
+	legend.onAdd = function (map) {
+		var div = L.DomUtil.create('div', 'info legend');
+		div.innerHTML += '<i class="open"></i>Open <br><i class="planned"></i><i class="planned"></i><span class="label">Planned</span><br><img style="" src="css/blue.png" /><span class="label">Running tour</span><br><img src="css/orange.png" /><span class="label">Points of interest</span>'
+	    return div;
+	};
+	legend.addTo(map);
+
 	//add GeoJSON to map as a layer
 	var featureLayer = L.mapbox.featureLayer()
 		.loadURL('data/map.geojson')

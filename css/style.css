@@ -64,3 +64,24 @@ path {
 	top:15px;
 	left:50px;
 }
+.legend {
+	color: #555;
+	background-color: white;
+	padding: 5px;
+	border: 1px solid #BBBBBB;
+	border-radius: 3px 3px 3px 3px
+}
+.legend i {
+	width: 31px;
+	height: 8px;
+	display: inline-block;
+	margin-right: 4px;
+	background: #367498;
+}
+.legend i.planned {
+	width: 14px; 
+	opacity: .8
+}
+.legend img {
+	vertical-align: text-bottom;
+}

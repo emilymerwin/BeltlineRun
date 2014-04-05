@@ -23,7 +23,7 @@
  - [ ] Clicking on map or popup "x" should pause tour
  - [X] clicking on the polyline creates a broken popup because it doesn't have the right properties.
  - [ ] Add layer toggle
- - [ ] Needs a legend
+ - [X] Needs a legend
  - [X] Different colors for different stages of beltline
  - [ ] Change marker color when active
  - [ ] Timestamps displaying in wrong timezone on mobile, but correct on desktop
