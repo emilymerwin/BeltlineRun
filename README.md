@@ -20,8 +20,8 @@
  - [X] make sure markers are sorted by timestamp
  - [X] Need a way to stop/pause/start tour, or change where you are in the tour
  - [X] popups aren't responsive
- - [ ] clicking on the polyline creates a broken popup because it doesn't have the right properties.
  - [ ] Clicking on map or popup "x" should pause tour
+ - [X] clicking on the polyline creates a broken popup because it doesn't have the right properties.
  - [ ] Add layer toggle
  - [ ] Needs a legend
  - [ ] Different colors for different stages of beltline
