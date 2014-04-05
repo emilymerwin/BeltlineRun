@@ -1,12 +1,18 @@
 (function() {
-	var markers = [], btnTxt = document.getElementById('cycle'), currentSlide = 0, timer, touring;
+	var markers = [], btnTxt = document.getElementById('cycle'), currentSlide = 0, timer, touring, docwidth = document.body.clientWidth;
+
 	var map = L.map('map').setView([33.768682989507914, -84.36510918661952], 13);
 	L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png', {
 		attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>, Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>.',
 		maxZoom: 18
 	}).addTo(map);
 	
-	var legend = L.control({position: 'topright'});
+	var legend; 
+	if(docwidth < 400){
+		legend = L.control({position: 'bottomright'});
+	} else {
+		legend = L.control({position: 'topright'});
+	}
 	legend.onAdd = function (map) {
 		var div = L.DomUtil.create('div', 'info legend');
 		div.innerHTML += '<i class="open"></i>Open <br><i class="planned"></i><i class="planned"></i><span class="label">Planned</span><br><img style="" src="css/blue.png" /><span class="label">Running tour</span><br><img src="css/orange.png" /><span class="label">Points of interest</span>'
@@ -45,8 +51,6 @@
 			layer.bindPopup(content);
 		});
 	});
-
-	var docwidth = document.body.clientWidth;
 
 	featureLayer.on('ready', function(){
 		this.eachLayer(function(layer){
