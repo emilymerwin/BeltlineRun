@@ -15,6 +15,22 @@
 		.loadURL('data/jill.geojson')
 		.addTo(map);
 
+	var lineLayer = L.mapbox.featureLayer()
+		.loadURL('data/lines.geojson')
+		.addTo(map);
+
+	//different styles for planned segments vs open segments
+	lineLayer.on('ready', function() {
+		var style = function(layer) {
+			if (layer.feature.properties.className === 'planned'){
+				return { dashArray: "8,12", lineCap: "square", opacity: .8 };
+			}
+		}
+ 		this.eachLayer(function(layer){
+			layer.setStyle(style(layer));
+		});
+	});
+
 	jillLayer.on('ready', function(){
 		this.eachLayer(function(layer){
 			var content = '<p>' + layer.feature.properties.text+'<\/p>';
