@@ -80,3 +80,6 @@ path {
 .legend img {
 	vertical-align: text-bottom;
 }
+.leaflet-marker-icon {
+	cursor:pointer;
+}
