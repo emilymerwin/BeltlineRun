@@ -65,13 +65,11 @@
 	});
 
 	function cycle(markers) {
-		var i = currentSlide;
 		function run() {
-			if (++i > markers.length - 1) i = 0;
-			currentSlide = i;
-			map.setView(markers[i].getLatLng(), 15);
-			markers[i].openPopup();
+			map.setView(markers[currentSlide].getLatLng(), 15);
+			markers[currentSlide].openPopup();
 			timer = window.setTimeout(run, 4000);
+			if (++currentSlide > markers.length - 1) i = 0;
 		}
 		if(!touring){
 			run();
