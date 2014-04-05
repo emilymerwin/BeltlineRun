@@ -55,12 +55,13 @@
 			}
 			markers.push(layer);
 			prop.id = markers.length;
-			//if the tour has been started or paused, resume tour from active marker
+			/*//if the tour has been started or paused, resume tour from active marker
+			//this doesnt work because this array hasn't been sorted by date - so they will be in a different order
 			layer.on('click', function() {
 				if(currentSlide){
 					currentSlide = prop.id;
 				}
-			});
+			});*/
 		});
 		markers.sort(chronoSort);
 	});
