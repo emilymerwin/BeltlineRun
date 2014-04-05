@@ -62,6 +62,7 @@
 				}
 			});
 		});
+		markers.sort(chronoSort);
 	});
 
 	function cycle(markers) {
@@ -118,6 +119,6 @@
 
 	document.getElementById("map-ui").onclick = function(){
 		//automatically move through points and trigger popups (but first sort into chronological order)
-		cycle(markers.sort(chronoSort));
+		cycle(markers);
 	}
 }());
