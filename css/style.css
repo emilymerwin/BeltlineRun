@@ -38,15 +38,10 @@ path {
 	background: #ECF5FA;
 }
 
-#map-ui li:last-child a{
+#map-ui li a{
 	border-bottom-width: 1px;
-	-webkit-border-radius: 0 0 3px 3px;
-	border-radius: 0 0 3px 3px;
-}
-
-#map-ui li:first-child a{
-	-webkit-border-radius: 3px 3px 0 0;
-	border-radius: 3px 3px 0 0;
+	-webkit-border-radius: 3px 3px 3px 3px;
+	border-radius: 3px 3px 3px 3px;
 }
 
 #map-ui button.active {
