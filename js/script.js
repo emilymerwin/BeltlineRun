@@ -66,7 +66,6 @@
 				layer.bindPopup(content, {maxWidth: prop.width, minHeight: prop.height});
 			}
 			markers.push(layer);
-			prop.id = markers.length;
 			//if the tour has been started or paused, resume tour from active marker
 			layer.on('click', function() {
 				if(currentSlide){
@@ -74,7 +73,10 @@
 				}
 			});
 		});
-		markers.sort(chronoSort);
+		//sort markers by timestamp so they will be in order for "tour"
+		markers.sort(function (a, b) {
+			return a.feature.properties.date.getTime() - b.feature.properties.date.getTime();
+		});
 	});
 
 	function cycle(markers) {
@@ -94,11 +96,6 @@
 			btnTxt.innerHTML = "Resume tour";
 		}
 	 }//cycle
-
-	//sort markers by timestamp
-	function chronoSort(a, b) {
-		return a.feature.properties.date.getTime() - b.feature.properties.date.getTime();
-	}
 
 	//currently not in use because of weird timezone thing on mobile
 	/*function reformatTimestamp(timestamp) {
@@ -130,7 +127,7 @@
 	}//reformatTimestamp*/
 
 	document.getElementById("map-ui").onclick = function(){
-		//automatically move through points and trigger popups (but first sort into chronological order)
+		//automatically move through points and trigger popups
 		cycle(markers);
 	}
 }());
