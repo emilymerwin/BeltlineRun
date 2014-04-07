@@ -79,6 +79,7 @@ path {
 }
 .legend img {
 	vertical-align: text-bottom;
+	margin-bottom: -4px;
 }
 .leaflet-marker-icon {
 	cursor:pointer;

@@ -15,7 +15,7 @@
 	}
 	legend.onAdd = function (map) {
 		var div = L.DomUtil.create('div', 'info legend');
-		div.innerHTML += '<i class="open"></i>Open <br><i class="planned"></i><i class="planned"></i><span class="label">Planned</span><br><img style="" src="css/blue.png" /><span class="label">Running tour</span><br><img src="css/orange.png" /><span class="label">Points of interest</span>'
+		div.innerHTML += '<i class="open"></i>Open <br><i class="planned"></i><i class="planned"></i><span class="label">Planned</span><br><img style="" src="css/blue.png" /><span class="label"> Running tour</span><br><img src="css/orange.png" /><span class="label"> Points of interest</span>'
 	    return div;
 	};
 	legend.addTo(map);
@@ -38,6 +38,8 @@
 		var style = function(layer) {
 			if (layer.feature.properties.className === 'planned'){
 				return { dashArray: "8,12", lineCap: "square", opacity: .8 };
+			} else {
+				return { lineCap: "butt" };
 			}
 		}
  		this.eachLayer(function(layer){
