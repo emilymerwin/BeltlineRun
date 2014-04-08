@@ -66,8 +66,9 @@
 			if (docwidth<400){
 				content += '<img src="'+prop.image+'" style="width:270px"/>';
 			} else {
-				content += '<img src="'+prop.image+'" style="height:'+prop.height+'; width:'+prop.width+'"/><p>'+prop.caption +'</p>';
+				content += '<img src="'+prop.image+'" style="height:'+prop.height+'; width:'+prop.width+'"/>';
 			}
+			content += '<p>'+prop.caption +'</p>';
 			layer.bindPopup(content, {closeButton: false, maxWidth: prop.width, minHeight: prop.height});
 			markers.push(layer);
 			//if the tour has been started or paused, resume tour from active marker
