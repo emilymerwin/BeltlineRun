@@ -81,13 +81,8 @@
 		});
 	});
 
-	function cycle(markers) {
-		function run() {
-			map.setView(markers[currentSlide].getLatLng(), 15);
-			markers[currentSlide].openPopup();
-			timer = window.setTimeout(run, 4000);
-			if (++currentSlide > markers.length - 1) i = 0;
-		}
+	//automatically move through points and trigger popups
+	document.getElementById("map-ui").onclick = function(){
 		if(!touring){
 			run();
 			touring = true;
@@ -95,8 +90,13 @@
 		} else {
 			pauseTour();
 		}
-	 }//cycle
-
+		function run() {
+			map.setView(markers[currentSlide].getLatLng(), 15);
+			markers[currentSlide].openPopup();
+			timer = window.setTimeout(run, 4000);
+			if (++currentSlide > markers.length - 1) i = 0;
+		}
+	}
 	 function pauseTour(){
 		 window.clearTimeout(timer);
 		 touring = false;
@@ -144,9 +144,4 @@
 		}
 		return(formattedTime);
 	}//reformatTimestamp*/
-
-	document.getElementById("map-ui").onclick = function(){
-		//automatically move through points and trigger popups
-		cycle(markers);
-	}
 }());
