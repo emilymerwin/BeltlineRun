@@ -11,7 +11,7 @@ path {
 	stroke: #367498;
 	stroke-width: 8;
 }
-#map-ui {
+#tour-ctrl {
 	position: absolute;
 	top: 75px;
 	left: 10px;
@@ -21,7 +21,7 @@ path {
 	z-index: 100;
 }
 
-#map-ui a {
+#tour-ctrl a {
 	 background: #FFF;
 	 display: block;
 	 margin: 0;
@@ -34,17 +34,17 @@ path {
 	 text-align: center;
 }
 
-#map-ui a:hover {
+#tour-ctrl a:hover {
 	background: #ECF5FA;
 }
 
-#map-ui li a{
+#tour-ctrl li a{
 	border-bottom-width: 1px;
 	-webkit-border-radius: 3px 3px 3px 3px;
 	border-radius: 3px 3px 3px 3px;
 }
 
-#map-ui button.active {
+#tour-ctrl button.active {
 	background: #3887BE;
 	border-color: #3887BE;
 	border-top-color: #FFF;
@@ -55,7 +55,7 @@ path {
 	height:10px;
 }
 
-#map-ui{
+#tour-ctrl{
 	top:15px;
 	left:50px;
 }

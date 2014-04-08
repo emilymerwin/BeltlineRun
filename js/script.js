@@ -1,13 +1,13 @@
 (function() {
-	var markers = [], btnTxt = document.getElementById('cycle'), currentSlide = 0, timer, touring, docwidth = document.body.clientWidth;
+	var markers = [], btnTxt = document.getElementById('cycle'), currentSlide = 0, timer, touring, docwidth = document.body.clientWidth, legend;
 
 	var map = L.map('map').setView([33.768682989507914, -84.36510918661952], 13);
 	L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png', {
 		attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>, Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>.',
 		maxZoom: 18
 	}).addTo(map);
-	
-	var legend; 
+
+	//add legend, reposition on mobile so it doesn't cover up photos
 	if(docwidth < 400){
 		legend = L.control({position: 'bottomright'});
 	} else {
@@ -21,11 +21,11 @@
 	legend.addTo(map);
 
 	//add GeoJSON to map as a layer
-	var featureLayer = L.mapbox.featureLayer()
+	var photosLayer = L.mapbox.featureLayer()
 		.loadURL('data/map.geojson')
 		.addTo(map);
 
-	var jillLayer = L.mapbox.featureLayer()
+	var infoLayer = L.mapbox.featureLayer()
 		.loadURL('data/jill.geojson')
 		.addTo(map);
 
@@ -47,20 +47,22 @@
 		});
 	});
 
-	jillLayer.on('ready', function(){
+	//setup popups for infoLayer
+	infoLayer.on('ready', function(){
 		this.eachLayer(function(layer){
 			var content = '<p>' + layer.feature.properties.text+'<\/p>';
 			layer.bindPopup(content);
 		});
 	});
 
-	featureLayer.on('ready', function(){
+	//setup popups for photosLayer
+	photosLayer.on('ready', function(){
 		this.eachLayer(function(layer){
 			var content = '<span class="leaflet-popup-close-button" id="close">×</span>',
 			prop = layer.feature.properties;
 			prop.date = new Date(prop.date);
-			prop.caption = prop.caption || " ";
-			//Popup options: set dimensions of images/popups so they will autosize/autopan appropriately. Disable default close btn bc has no #ID, no jQuery and we need to listen for it in 'tour' mode. Listening for 'popupclose' won't work bc it will also be fired when closing one popup to open another, which happens on each marker during tour
+			prop.caption = prop.caption || " "; //prevent 'null' from displaying if photo has no caption
+			//Popup options: set dimensions of images so they will autosize/autopan appropriately. Disable default close btn bc has no #ID, no jQuery and I need to listen for it in 'tour' mode. Listening for 'popupclose' won't work bc it will also be fired when closing one popup to open another, which happens on each marker during tour
 			if (docwidth<400){
 				content += '<img src="'+prop.image+'" style="width:270px"/>';
 			} else {
@@ -82,7 +84,7 @@
 	});
 
 	//automatically move through points and trigger popups
-	document.getElementById("map-ui").onclick = function(){
+	document.getElementById("tour-ctrl").onclick = function(){
 		if(!touring){
 			run();
 			touring = true;
@@ -103,6 +105,7 @@
 		 btnTxt.innerHTML = "Resume tour";
 	 }
 
+	 //Close popup when 'x' button is clicked, if touring pause tour. Leaflet popups include close buttons/functionality by default be I disabled them bc they had no #ID, I'm not using jQuery and need to listen for it in 'tour' mode. Listening for 'popupclose' won't work bc it will also be fired when closing one popup to open another, which happens on each marker during tour
 	 map.on("popupopen", function(){
 		 document.getElementById("close").onclick = function(){
 			 map.closePopup();
