@@ -60,12 +60,13 @@
 			prop.date = new Date(prop.date);
 			prop.caption = prop.caption || " ";
 			var content;
+			//Popup options: set dimensions of images/popups so they will autosize/autopan appropriately. Disable default close btn bc has no #ID, no jQuery and we need to listen for it in 'tour' mode. Listening for 'popupclose' won't work bc it will also be fired when closing one popup to open another, which happens on each marker during tour
 			if (docwidth<400){
-				content = '<img src="'+prop.image+'" style="width:270px"/>';
-				layer.bindPopup(content, {maxWidth: prop.width, minHeight: prop.height});
+				content = '<span class="leaflet-popup-close-button" id="close">×</span><img src="'+prop.image+'" style="width:270px"/>';
+				layer.bindPopup(content, {closeButton: false, maxWidth: prop.width, minHeight: prop.height});
 			} else {
-				content = '<img src="'+prop.image+'" style="height:'+prop.height+'; width:'+prop.width+'"/><p>'+prop.caption +'</p>';
-				layer.bindPopup(content, {maxWidth: prop.width, minHeight: prop.height});
+				content = '<span class="leaflet-popup-close-button" id="close">×</span><img src="'+prop.image+'" style="height:'+prop.height+'; width:'+prop.width+'"/><p>'+prop.caption +'</p>';
+				layer.bindPopup(content, {closeButton: false, maxWidth: prop.width, minHeight: prop.height});
 			}
 			markers.push(layer);
 			//if the tour has been started or paused, resume tour from active marker
@@ -93,12 +94,29 @@
 			touring = true;
 			btnTxt.innerHTML = "Pause tour";
 		} else {
-			window.clearTimeout(timer);
-			touring = false;
-			btnTxt.innerHTML = "Resume tour";
+			pauseTour();
 		}
 	 }//cycle
 
+	 function pauseTour(){
+		 window.clearTimeout(timer);
+		 touring = false;
+		 btnTxt.innerHTML = "Resume tour";
+	 }
+
+	 map.on("popupopen", function(){
+		 document.getElementById("close").onclick = function(){
+			 map.closePopup();
+			 if(touring){
+				 pauseTour();
+			 }
+		 }
+	 });
+	 map.on("click", function(){
+		 if(touring){
+			 pauseTour();
+		 }
+	 });
 	//currently not in use because of weird timezone thing on mobile
 	/*function reformatTimestamp(timestamp) {
 		var formattedTime = setTimeFormat(timestamp.getHours()) + ":" + showZeroFilled(timestamp.getMinutes()) + setAmPm(timestamp);

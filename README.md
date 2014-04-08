@@ -20,7 +20,7 @@
  - [X] make sure markers are sorted by timestamp
  - [X] Need a way to stop/pause/start tour, or change where you are in the tour
  - [X] popups aren't responsive
- - [ ] Clicking on map or popup "x" should pause tour
+ - [X] Clicking on map or popup "x" should pause tour
  - [X] clicking on the polyline creates a broken popup because it doesn't have the right properties.
  - [ ] Add layer toggle
  - [X] Needs a legend
