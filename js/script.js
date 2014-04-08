@@ -15,7 +15,7 @@
 	}
 	legend.onAdd = function (map) {
 		var div = L.DomUtil.create('div', 'info legend');
-		div.innerHTML += '<i class="open"></i>Open <br><i class="planned"></i><i class="planned"></i><span class="label">Planned</span><br><img style="" src="css/blue.png" /><span class="label"> Running tour</span><br><img src="css/orange.png" /><span class="label"> Points of interest</span>'
+		div.innerHTML += '<i class="open"></i>Open <br><i class="planned"></i><i class="planned"></i><span class="label">Planned</span><br><img style="" src="css/img/blue.png" /><span class="label"> Running tour</span><br><img src="css/img/orange.png" /><span class="label"> Points of interest</span>'
 	    return div;
 	};
 	legend.addTo(map);
@@ -64,9 +64,9 @@
 			prop.caption = prop.caption || " "; //prevent 'null' from displaying if photo has no caption
 			//Popup options: set dimensions of images so they will autosize/autopan appropriately. Disable default close btn bc has no #ID, no jQuery and I need to listen for it in 'tour' mode. Listening for 'popupclose' won't work bc it will also be fired when closing one popup to open another, which happens on each marker during tour
 			if (docwidth<400){
-				content += '<img src="'+prop.image+'" style="width:270px"/>';
+				content += '<img src="'+prop.image+'" style="width:270px" alt=" "/>';
 			} else {
-				content += '<img src="'+prop.image+'" style="height:'+prop.height+'; width:'+prop.width+'"/>';
+				content += '<img src="'+prop.image+'" style="height:'+prop.height+'; width:'+prop.width+'" alt=" "/>';
 			}
 			content += '<p>'+prop.caption +'</p>';
 			layer.bindPopup(content, {closeButton: false, maxWidth: prop.width, minHeight: prop.height});

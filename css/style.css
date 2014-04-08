@@ -7,6 +7,9 @@
 	height: 700px;
 	max-width: 960px;
 }
+.leaflet-popup-content img{
+	background: url('img/ajax-loader.gif') no-repeat center center; 
+}
 path {
 	stroke: #367498;
 	stroke-width: 8;
