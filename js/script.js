@@ -56,18 +56,17 @@
 
 	featureLayer.on('ready', function(){
 		this.eachLayer(function(layer){
-			var prop = layer.feature.properties;
+			var content = '<span class="leaflet-popup-close-button" id="close">×</span>',
+			prop = layer.feature.properties;
 			prop.date = new Date(prop.date);
 			prop.caption = prop.caption || " ";
-			var content;
 			//Popup options: set dimensions of images/popups so they will autosize/autopan appropriately. Disable default close btn bc has no #ID, no jQuery and we need to listen for it in 'tour' mode. Listening for 'popupclose' won't work bc it will also be fired when closing one popup to open another, which happens on each marker during tour
 			if (docwidth<400){
-				content = '<span class="leaflet-popup-close-button" id="close">×</span><img src="'+prop.image+'" style="width:270px"/>';
-				layer.bindPopup(content, {closeButton: false, maxWidth: prop.width, minHeight: prop.height});
+				content += '<img src="'+prop.image+'" style="width:270px"/>';
 			} else {
-				content = '<span class="leaflet-popup-close-button" id="close">×</span><img src="'+prop.image+'" style="height:'+prop.height+'; width:'+prop.width+'"/><p>'+prop.caption +'</p>';
-				layer.bindPopup(content, {closeButton: false, maxWidth: prop.width, minHeight: prop.height});
+				content += '<img src="'+prop.image+'" style="height:'+prop.height+'; width:'+prop.width+'"/><p>'+prop.caption +'</p>';
 			}
+			layer.bindPopup(content, {closeButton: false, maxWidth: prop.width, minHeight: prop.height});
 			markers.push(layer);
 			//if the tour has been started or paused, resume tour from active marker
 			layer.on('click', function() {
