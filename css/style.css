@@ -11,6 +11,10 @@ path {
 	stroke: #367498;
 	stroke-width: 8;
 }
+.leaflet-popup-content p, .leftlet-container p{
+	font-size: 12px;
+	margin: 0;
+}
 #tour-ctrl {
 	position: absolute;
 	top: 75px;
