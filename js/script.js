@@ -96,7 +96,9 @@
 			map.setView(markers[currentSlide].getLatLng(), 15);
 			markers[currentSlide].openPopup();
 			timer = window.setTimeout(run, 4000);
-			if (++currentSlide > markers.length - 1) i = 0;
+			if (++currentSlide > markers.length - 1) {
+				currentSlide = 0;
+			}
 		}
 	}
 	 function pauseTour(){
