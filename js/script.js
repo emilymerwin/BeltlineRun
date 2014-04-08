@@ -107,7 +107,7 @@
 		 btnTxt.innerHTML = "Resume tour";
 	 }
 
-	 //Close popup when 'x' button is clicked, if touring pause tour. Leaflet popups include close buttons/functionality by default be I disabled them bc they had no #ID, I'm not using jQuery and need to listen for it in 'tour' mode. Listening for 'popupclose' won't work bc it will also be fired when closing one popup to open another, which happens on each marker during tour
+	 //Close popup when 'x' button is clicked, if touring pause tour. Leaflet popups include close buttons/functionality by default but I disabled them bc they had no #ID, I'm not using jQuery and need to listen for it in 'tour' mode. Listening for 'popupclose' won't work bc it will also be fired when closing one popup to open another, which happens on each marker during tour
 	 map.on("popupopen", function(){
 		 document.getElementById("close").onclick = function(){
 			 map.closePopup();
