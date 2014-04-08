@@ -73,7 +73,7 @@
 			//if the tour has been started or paused, resume tour from active marker
 			layer.on('click', function() {
 				if(currentSlide){
-					currentSlide = markers.indexOf(layer);
+					currentSlide = markers.indexOf(layer) +1;
 				}
 			});
 		});
