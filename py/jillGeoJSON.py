@@ -6,7 +6,6 @@ import json
 import decimal #for GPS conversion
 from PIL import Image #for reading image EXIF data, using this fork https://github.com/python-imaging/Pillow
 from PIL.ExifTags import TAGS
-import operator
 
 #where to find the images
 directory = '../img/jill/starred/'
