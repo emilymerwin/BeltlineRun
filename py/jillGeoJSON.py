@@ -41,7 +41,7 @@ for f in files:
 	#store the image properties we want for the JSON
 	geoJ["features"].append({"type": "Feature", "geometry": {"type": "Point", "coordinates": [lon, lat]}, "properties": {"marker-symbol": "star", "marker-size": "small", "marker-color": "#FC7234", "text": get_field(exif, "ImageDescription")} })
 
-#turn tree object into JSON and pretty print it
+#turn geoJ object into JSON and pretty print it
 out = json.dumps(geoJ, indent=4, separators=(',', ': '))
 print "JSON parsed!"
 
