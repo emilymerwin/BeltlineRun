@@ -14,8 +14,10 @@
 ##ToDo
  - [X] Add more captions
  - [X] Add loading indicator to popups
+ - [ ] Label beltline section if you click the line
  - [ ] The "points of interest" could use more descriptive icons
  - [ ] Resytle tour control button (maybe move it over with legend?)
+ - [ ] Add a mini map for context of where you are on the loop during the tour
  - [ ] Cluster markers?
  - [ ] Change marker color when active
  - [ ] Timestamps displaying in wrong timezone on mobile, but correct on desktop
