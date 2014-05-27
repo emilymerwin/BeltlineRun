@@ -1,4 +1,5 @@
 ##Beltline Run
+- Ran 4/3/14 [here](http://www.myajc.com/beltline-tour/)
 - Ben gave me his photos directly, Jill put hers into SCC and attached to budget item so she could caption them. iPhone GPS data worked great. Used Picasa to edit GPS coods visually.
 - Created a photoshop batch to resize images (for some reason PIL couldn't read ImageDescription after saving for web, even though the data is still there)
 - createGeoJSON.py opens folder of images and creates GeoJSON formatted using metadata GPS coords and captions. Note: conversion is required to tranform the iPhone's GPS degree system to the decimal system
@@ -12,8 +13,6 @@
  - [MapBox.js](https://www.mapbox.com/mapbox.js/api/v1.6.2/)
  
 ##ToDo
- - [X] Add more captions
- - [X] Add loading indicator to popups
  - [ ] Label beltline section if you click the line
  - [ ] The "points of interest" could use more descriptive icons
  - [ ] Resytle tour control button (maybe move it over with legend?)
@@ -24,15 +23,17 @@
  - [ ] Retina versions of images?
  - [ ] Test in IE
  - [ ] First image on tour cut off at top
- - [X] create line with Ben's Garmin data
- - [X] Add image display
- - [X] Add Jill's points
- - [X] remove line that leads to Ben's house
- - [X] Create navigation along the path
- - [X] make sure markers are sorted by timestamp
- - [X] Need a way to stop/pause/start tour, or change where you are in the tour
- - [X] popups aren't responsive
- - [X] Clicking on map or popup "x" should pause tour
- - [X] clicking on the polyline creates a broken popup because it doesn't have the right properties.
- - [X] Needs a legend
- - [X] Different colors for different stages of beltline
+ - [x] create line with Ben's Garmin data
+ - [x] Add image display
+ - [x] Add Jill's points
+ - [x] remove line that leads to Ben's house
+ - [x] Create navigation along the path
+ - [x] make sure markers are sorted by timestamp
+ - [x] Need a way to stop/pause/start tour, or change where you are in the tour
+ - [x] popups aren't responsive
+ - [x] Clicking on map or popup "x" should pause tour
+ - [x] clicking on the polyline creates a broken popup because it doesn't have the right properties.
+ - [x] Needs a legend
+ - [x] Different colors for different stages of beltline
+ - [x] Add more captions
+ - [x] Add loading indicator to popups
